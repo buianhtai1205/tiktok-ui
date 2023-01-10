@@ -1,5 +1,18 @@
+import clsx from "clsx";
+import styles from "./Header.module.scss";
+
 const Header = () => {
-	return <h2>Header</h2>;
+	return (
+		<header className={clsx(styles.wrapper)}>
+			<div className={clsx(styles.inner)}>
+				{/* Logo */}
+
+				{/* Search */}
+
+				{/* ... */}
+			</div>
+		</header>
+	);
 };
 
 export default Header;
