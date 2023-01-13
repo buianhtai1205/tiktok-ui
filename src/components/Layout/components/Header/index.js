@@ -7,13 +7,19 @@ import {
 	faMagnifyingGlass,
 	faPlus,
 	faEllipsisVertical,
+	faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCircleQuestion,
+	faKeyboard,
+} from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 
 import styles from "./Header.module.scss";
 import { images } from "~/assets/images";
 import Popper from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
+import Button from "~/components/Button";
 
 console.log(images.logo);
 
@@ -105,18 +111,64 @@ const Header = () => {
 				{/* Action */}
 				<div className={clsx(styles.action)}>
 					{/* Upload */}
-					<button>
-						<FontAwesomeIcon icon={faPlus} />
-						Upload
-					</button>
-
-					{/* Login */}
-					<button>Log in</button>
-
-					{/* Menu */}
-					<button>
-						<FontAwesomeIcon icon={faEllipsisVertical} />
-					</button>
+					<div className={clsx(styles.upload)}>
+						<Button default>
+							<FontAwesomeIcon
+								className={clsx(styles.iconPlus)}
+								icon={faPlus}
+							/>
+							<div className={clsx(styles.text)}>Upload</div>
+						</Button>
+					</div>
+					<div className={clsx(styles.login)}>
+						<Button primary>Log in</Button>
+					</div>
+					<Tippy
+						interactive={true}
+						render={(attrs) => (
+							<div
+								className={clsx(styles.menuOption)}
+								tabIndex="-1"
+								{...attrs}
+							>
+								<Popper>
+									<div className={clsx(styles.option)}>
+										<FontAwesomeIcon
+											className={clsx(styles.icon)}
+											icon={faLanguage}
+										/>
+										English
+									</div>
+									<div className={clsx(styles.option)}>
+										<FontAwesomeIcon
+											className={clsx(styles.icon)}
+											icon={faCircleQuestion}
+										/>
+										Feedback and help
+									</div>
+									<div className={clsx(styles.option)}>
+										<FontAwesomeIcon
+											className={clsx(styles.icon)}
+											icon={faKeyboard}
+										/>
+										Keyboard shortcuts
+									</div>
+									<div className={clsx(styles.option)}>
+										<img
+											src={images.moonIcon}
+											alt="moon"
+											className={clsx(styles.icon)}
+										/>
+										Dark mode
+									</div>
+								</Popper>
+							</div>
+						)}
+					>
+						<div className={clsx(styles.menu)}>
+							<FontAwesomeIcon icon={faEllipsisVertical} />
+						</div>
+					</Tippy>
 				</div>
 			</div>
 		</header>
