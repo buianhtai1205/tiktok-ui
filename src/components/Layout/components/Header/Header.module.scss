@@ -3,6 +3,7 @@
 	--search-button-height: 46px;
 	--search-border-radius: 92px;
 	--spacer-range-top: 9px;
+	--search-wrapper-width: 361px;
 
 	width: 100%;
 	height: var(--default-layout-header-height, 60px);
@@ -25,7 +26,7 @@
 .search {
 	position: relative;
 	display: flex;
-	width: 361px;
+	width: var(--search-wrapper-width);
 	height: var(--search-button-height);
 	padding-left: 16px;
 	background-color: rgba(22, 24, 35, 0.06);
@@ -57,6 +58,19 @@
 		top: var(--spacer-range-top);
 		right: var(--search-button-width);
 		background-color: rgba(22, 24, 35, 0.12);
+	}
+}
+
+.searchResult {
+	width: var(--search-wrapper-width);
+
+	.title {
+		height: 30px;
+		padding: 5px 12px;
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 600;
+		color: rgba(22, 24, 35, 0.5);
 	}
 }
 
