@@ -7,12 +7,7 @@ import {
 	faMagnifyingGlass,
 	faPlus,
 	faEllipsisVertical,
-	faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-	faCircleQuestion,
-	faKeyboard,
-} from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 
 import styles from "./Header.module.scss";
@@ -20,6 +15,7 @@ import { images } from "~/assets/images";
 import Popper from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
+import Menu from "../Menu";
 
 console.log(images.logo);
 
@@ -120,55 +116,18 @@ const Header = () => {
 							<div className={clsx(styles.text)}>Upload</div>
 						</Button>
 					</div>
+
+					{/* Login */}
 					<div className={clsx(styles.login)}>
 						<Button primary>Log in</Button>
 					</div>
-					<Tippy
-						interactive={true}
-						render={(attrs) => (
-							<div
-								className={clsx(styles.menuOption)}
-								tabIndex="-1"
-								{...attrs}
-							>
-								<Popper>
-									<div className={clsx(styles.option)}>
-										<FontAwesomeIcon
-											className={clsx(styles.icon)}
-											icon={faLanguage}
-										/>
-										English
-									</div>
-									<div className={clsx(styles.option)}>
-										<FontAwesomeIcon
-											className={clsx(styles.icon)}
-											icon={faCircleQuestion}
-										/>
-										Feedback and help
-									</div>
-									<div className={clsx(styles.option)}>
-										<FontAwesomeIcon
-											className={clsx(styles.icon)}
-											icon={faKeyboard}
-										/>
-										Keyboard shortcuts
-									</div>
-									<div className={clsx(styles.option)}>
-										<img
-											src={images.moonIcon}
-											alt="moon"
-											className={clsx(styles.icon)}
-										/>
-										Dark mode
-									</div>
-								</Popper>
-							</div>
-						)}
-					>
+
+					{/* Menu */}
+					<Menu>
 						<div className={clsx(styles.menu)}>
 							<FontAwesomeIcon icon={faEllipsisVertical} />
 						</div>
-					</Tippy>
+					</Menu>
 				</div>
 			</div>
 		</header>
