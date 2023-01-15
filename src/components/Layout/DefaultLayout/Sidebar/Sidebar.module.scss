@@ -33,8 +33,39 @@
 	}
 }
 
+.unLogin {
+	position: relative;
+	padding-bottom: 4px;
+
+	p {
+		margin: 16px 0;
+		color: rgba(22, 24, 35, 0.5);
+		font-size: 1.6rem;
+		line-height: 22px;
+	}
+
+	.loginBtn {
+		width: 90%;
+		height: 48px;
+		margin: 16px 0;
+	}
+}
+
 .suggestedAccounts {
 	position: relative;
+	padding: 16px 0;
+
+	.title {
+		margin-bottom: 8px;
+		font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+		font-weight: 600;
+		font-size: 1.3rem;
+		color: rgba(22, 24, 35, 0.75);
+	}
+
+	.listAccounts {
+		transform: translateX(-8px);
+	}
 }
 
 .discover {
@@ -46,9 +77,9 @@
 		position: absolute;
 		content: "";
 		width: 90%;
-		height: 0.5px;
+		height: 5px;
 		background-color: rgba(22, 24, 35, 0.09);
-		bottom: -5px;
+		bottom: 0;
 		left: 6px;
 	}
 }
