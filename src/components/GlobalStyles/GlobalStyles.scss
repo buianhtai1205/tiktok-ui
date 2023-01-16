@@ -41,6 +41,10 @@ a[href] {
 	text-decoration: none;
 }
 
+a:hover {
+	text-decoration: underline;
+}
+
 .d-none {
 	display: none;
 }

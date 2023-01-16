@@ -5,6 +5,7 @@ import styles from "./Sidebar.module.scss";
 import { images } from "~/assets/images";
 import Button from "~/components/Button";
 import DiscoverItem from "../../components/DiscoverItem";
+import Footer from "../Footer";
 
 const Sidebar = () => {
 	const [suggestedAccounts, setSuggestedAccounts] = useState([]);
@@ -162,13 +163,7 @@ const Sidebar = () => {
 			</div>
 
 			{/* Footer */}
-			<div className={clsx(styles.footer)}>
-				<a href="/">About</a>
-				<a href="/">Newsrooms</a>
-				<a href="/">Contact</a>
-				<a href="/">Careers</a>
-				<a href="/">ByteDance</a>
-			</div>
+			<Footer />
 		</aside>
 	);
 };
