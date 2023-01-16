@@ -7,6 +7,8 @@ import Button from "~/components/Button";
 
 const Sidebar = () => {
 	const [suggestedAccounts, setSuggestedAccounts] = useState([]);
+	const [showAll, setShowAll] = useState(false);
+
 	useEffect(() => {
 		//fake api
 		const apiResult = [
@@ -61,7 +63,15 @@ const Sidebar = () => {
 		];
 
 		setSuggestedAccounts(apiResult);
+		console.log(">>call api");
 	}, []);
+
+	useEffect(() => {}, [showAll]);
+
+	const handleShowHide = () => {
+		setShowAll(!showAll);
+	};
+
 	return (
 		<aside className={clsx(styles.wrapper)}>
 			{/* NavBar */}
@@ -95,16 +105,53 @@ const Sidebar = () => {
 			<div className={clsx(styles.suggestedAccounts, styles.container)}>
 				<h4 className={clsx(styles.title)}>Suggested accounts</h4>
 				<div className={clsx(styles.listAccounts)}>
-					{suggestedAccounts.map((item, index) => (
-						<AccountItem key={index} accountInfo={item} />
-					))}
+					{suggestedAccounts.map((item, index) => {
+						if (showAll === false && index >= 5) {
+							return "";
+						}
+						return <AccountItem key={index} accountInfo={item} />;
+					})}
 				</div>
-				<span>See all</span>
+				<span className={clsx(styles.showAll)} onClick={handleShowHide}>
+					{showAll ? "See less" : "See all"}
+				</span>
 			</div>
 
 			{/* Discover */}
 			<div className={clsx(styles.discover, styles.container)}>
-				<h4>Discover</h4>
+				<h4 className={clsx(styles.title)}>Discover</h4>
+				<div className={clsx(styles.discoverList)}>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.hashtagIcon} alt="hashtag" />
+						<p>suthatla</p>
+					</div>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.hashtagIcon} alt="hashtag" />
+						<p>mackedoi</p>
+					</div>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.hashtagIcon} alt="hashtag" />
+						<p>sansangthaydoi</p>
+					</div>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.musicIcon} alt="hashtag" />
+						<p>
+							Yêu Đơn Phương Là Gì (MEE Remix) - Mee Media & h0n &
+							BHMedia
+						</p>
+					</div>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.musicIcon} alt="hashtag" />
+						<p>
+							Về Nghe Mẹ Ru - NSND Bach Tuyet & Hứa Kim Tuyền & 14
+							Casper & Hoàng Dũng
+						</p>
+					</div>
+					<div className={clsx(styles.discoverItem)}>
+						<img src={images.musicIcon} alt="hashtag" />
+						<p>Thiên Thần Tình Yêu - RICKY STAR</p>
+					</div>
+				</div>
 			</div>
 
 			{/* Footer */}
