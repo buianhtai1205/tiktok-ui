@@ -4,10 +4,12 @@ import AccountItem from "~/components/AccountItem";
 import styles from "./Sidebar.module.scss";
 import { images } from "~/assets/images";
 import Button from "~/components/Button";
+import DiscoverItem from "../../components/DiscoverItem";
 
 const Sidebar = () => {
 	const [suggestedAccounts, setSuggestedAccounts] = useState([]);
 	const [showAll, setShowAll] = useState(false);
+	const [discoverList, setDiscoverList] = useState([]);
 
 	useEffect(() => {
 		//fake api
@@ -24,45 +26,37 @@ const Sidebar = () => {
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
 			},
+		];
+
+		const apiDiscover = [
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "hashtag",
+				text: "suthatla",
 			},
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "hashtag",
+				text: "mackedoi",
 			},
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "hashtag",
+				text: "sansangthaydoi",
 			},
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "music",
+				text: "Yêu Đơn Phương Là Gì (MEE Remix) - Mee Media & h0n & BHMedia",
 			},
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "music",
+				text: "Về Nghe Mẹ Ru - NSND Bach Tuyet & Hứa Kim Tuyền & 14 Casper & Hoàng Dũng",
 			},
 			{
-				username: "nguyenvana.offical",
-				fullname: "Nguyen Van A",
-				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
-				isTick: false,
+				type: "music",
+				text: "Thiên Thần Tình Yêu - RICKY STAR",
 			},
 		];
 
 		setSuggestedAccounts(apiResult);
+		setDiscoverList(apiDiscover);
 		console.log(">>call api");
 	}, []);
 
@@ -112,45 +106,28 @@ const Sidebar = () => {
 						return <AccountItem key={index} accountInfo={item} />;
 					})}
 				</div>
-				<span className={clsx(styles.showAll)} onClick={handleShowHide}>
-					{showAll ? "See less" : "See all"}
-				</span>
+				{suggestedAccounts.length > 5 && (
+					<span
+						className={clsx(styles.showAll)}
+						onClick={handleShowHide}
+					>
+						{showAll ? "See less" : "See all"}
+					</span>
+				)}
 			</div>
 
 			{/* Discover */}
 			<div className={clsx(styles.discover, styles.container)}>
 				<h4 className={clsx(styles.title)}>Discover</h4>
 				<div className={clsx(styles.discoverList)}>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.hashtagIcon} alt="hashtag" />
-						<p>suthatla</p>
-					</div>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.hashtagIcon} alt="hashtag" />
-						<p>mackedoi</p>
-					</div>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.hashtagIcon} alt="hashtag" />
-						<p>sansangthaydoi</p>
-					</div>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.musicIcon} alt="hashtag" />
-						<p>
-							Yêu Đơn Phương Là Gì (MEE Remix) - Mee Media & h0n &
-							BHMedia
-						</p>
-					</div>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.musicIcon} alt="hashtag" />
-						<p>
-							Về Nghe Mẹ Ru - NSND Bach Tuyet & Hứa Kim Tuyền & 14
-							Casper & Hoàng Dũng
-						</p>
-					</div>
-					<div className={clsx(styles.discoverItem)}>
-						<img src={images.musicIcon} alt="hashtag" />
-						<p>Thiên Thần Tình Yêu - RICKY STAR</p>
-					</div>
+					{discoverList.length > 0 &&
+						discoverList.map((item, index) => (
+							<DiscoverItem
+								key={index}
+								text={item.text}
+								type={item.type}
+							/>
+						))}
 				</div>
 			</div>
 
