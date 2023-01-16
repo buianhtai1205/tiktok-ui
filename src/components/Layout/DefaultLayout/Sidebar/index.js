@@ -26,6 +26,42 @@ const Sidebar = () => {
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
 			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
+			{
+				username: "nguyenvana.offical",
+				fullname: "Nguyen Van A",
+				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
+				isTick: true,
+			},
 		];
 
 		const apiDiscover = [
@@ -59,12 +95,6 @@ const Sidebar = () => {
 		setDiscoverList(apiDiscover);
 		console.log(">>call api");
 	}, []);
-
-	useEffect(() => {}, [showAll]);
-
-	const handleShowHide = () => {
-		setShowAll(!showAll);
-	};
 
 	return (
 		<aside className={clsx(styles.wrapper)}>
@@ -109,7 +139,7 @@ const Sidebar = () => {
 				{suggestedAccounts.length > 5 && (
 					<span
 						className={clsx(styles.showAll)}
-						onClick={handleShowHide}
+						onClick={() => setShowAll(!showAll)}
 					>
 						{showAll ? "See less" : "See all"}
 					</span>
