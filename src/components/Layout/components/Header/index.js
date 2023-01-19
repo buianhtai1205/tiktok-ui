@@ -67,7 +67,7 @@ const Header = () => {
 					visible={searchResult.length > 0}
 					render={(attrs) => (
 						<div
-							className={clsx(styles.searchResult)}
+							className={clsx(styles.searchResult, "d-none")}
 							tabIndex="-1"
 							{...attrs}
 						>
