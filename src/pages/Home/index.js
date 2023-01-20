@@ -5,12 +5,11 @@ import styles from "./Home.module.scss";
 const Home = () => {
 	return (
 		<div className={clsx(styles.wrapper)}>
-			<h2>HomePage</h2>
 			<div className={clsx(styles.listContents)}>
 				<ContentItem id={"video1"} />
+				<ContentItem id={"video2"} />
 				<ContentItem id={"video1"} />
-				<ContentItem id={"video1"} />
-				<ContentItem id={"video1"} />
+				<ContentItem id={"video2"} />
 			</div>
 		</div>
 	);
