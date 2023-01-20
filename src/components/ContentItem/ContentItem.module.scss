@@ -104,30 +104,10 @@
 		flex-direction: column;
 		cursor: pointer;
 
-		.iconWrapper {
-			width: 48px;
-			height: 48px;
-			border-radius: 50%;
-			background-color: rgba(22, 24, 35, 0.06);
-			margin-top: 8px;
-			margin-bottom: 6px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			.icon {
-				color: rgb(22, 24, 35);
-				width: 20px;
-				height: 20px;
-			}
-		}
-
-		.countAction {
-			color: rgba(22, 24, 35, 0.75);
-			font-size: 1.2rem;
-			line-height: 17px;
-			text-align: center;
-			font-weight: bold;
+		.icon {
+			color: rgb(22, 24, 35);
+			width: 20px;
+			height: 20px;
 		}
 	}
 }

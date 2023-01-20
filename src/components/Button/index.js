@@ -18,4 +18,14 @@ const Button = (props) => {
 	);
 };
 
+const ActionButton = (props) => {
+	return (
+		<div className={clsx(styles.actionButton)}>
+			<div className={clsx(styles.iconWrapper)}>{props.children}</div>
+			<div className={clsx(styles.countAction)}>{props.count}</div>
+		</div>
+	);
+};
+
 export default Button;
+export { ActionButton };

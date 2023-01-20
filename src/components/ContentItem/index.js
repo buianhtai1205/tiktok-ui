@@ -10,7 +10,7 @@ import { ref, child, get } from "firebase/database";
 import { database } from "~/firebase-server";
 import styles from "./ContentItem.module.scss";
 import { Link } from "react-router-dom";
-import Button from "../Button";
+import Button, { ActionButton } from "../Button";
 import { images } from "~/assets/images";
 
 const ContentItem = (props) => {
@@ -83,35 +83,24 @@ const ContentItem = (props) => {
 						frameborder="0"
 					></iframe>
 					<div className={clsx(styles.actionItem)}>
-						<div className={clsx(styles.actionButton)}>
-							<div className={clsx(styles.iconWrapper)}>
-								<FontAwesomeIcon
-									icon={faHeart}
-									className={clsx(styles.icon)}
-								/>
-							</div>
-							<div className={clsx(styles.countAction)}>
-								103.5k
-							</div>
-						</div>
-						<div className={clsx(styles.actionButton)}>
-							<div className={clsx(styles.iconWrapper)}>
-								<FontAwesomeIcon
-									icon={faCommentDots}
-									className={clsx(styles.icon)}
-								/>
-							</div>
-							<div className={clsx(styles.countAction)}>937</div>
-						</div>
-						<div className={clsx(styles.actionButton)}>
-							<div className={clsx(styles.iconWrapper)}>
-								<FontAwesomeIcon
-									icon={faShare}
-									className={clsx(styles.icon)}
-								/>
-							</div>
-							<div className={clsx(styles.countAction)}>151</div>
-						</div>
+						<ActionButton count={"103.5k"}>
+							<FontAwesomeIcon
+								icon={faHeart}
+								className={clsx(styles.icon)}
+							/>
+						</ActionButton>
+						<ActionButton count={"937"}>
+							<FontAwesomeIcon
+								icon={faCommentDots}
+								className={clsx(styles.icon)}
+							/>
+						</ActionButton>
+						<ActionButton count={"151"}>
+							<FontAwesomeIcon
+								icon={faShare}
+								className={clsx(styles.icon)}
+							/>
+						</ActionButton>
 					</div>
 				</div>
 			</div>
