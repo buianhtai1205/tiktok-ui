@@ -7,7 +7,12 @@ import {
 	faMagnifyingGlass,
 	faPlus,
 	faEllipsisVertical,
+	faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCircleQuestion,
+	faKeyboard,
+} from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 
 import styles from "./Header.module.scss";
@@ -15,9 +20,57 @@ import { images } from "~/assets/images";
 import Popper from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
-import Menu from "../Menu";
+import Menu from "~/components/Popper/Menu";
 
-console.log(images.logo);
+const MENU_ITEMS = [
+	{
+		icon: (
+			<FontAwesomeIcon className={clsx(styles.icon)} icon={faLanguage} />
+		),
+		name: "English",
+		children: {
+			title: "Language",
+			value: [
+				{
+					type: "Language",
+					code: "en",
+					name: "English",
+				},
+				{
+					type: "Language",
+					code: "vi",
+					name: "Tiếng Việt",
+				},
+			],
+		},
+	},
+	{
+		icon: (
+			<FontAwesomeIcon
+				className={clsx(styles.icon)}
+				icon={faCircleQuestion}
+			/>
+		),
+		name: "Feedback and help",
+		to: "/feedback",
+	},
+	{
+		icon: (
+			<FontAwesomeIcon className={clsx(styles.icon)} icon={faKeyboard} />
+		),
+		name: "Keyboard shortcuts",
+	},
+	{
+		icon: (
+			<img
+				src={images.moonIcon}
+				alt="moon"
+				className={clsx(styles.icon)}
+			/>
+		),
+		name: "Dark mode",
+	},
+];
 
 const Header = () => {
 	const [searchResult, setSearchResult] = useState([]);
@@ -123,7 +176,7 @@ const Header = () => {
 					</div>
 
 					{/* Menu */}
-					<Menu>
+					<Menu items={MENU_ITEMS}>
 						<div className={clsx(styles.menu)}>
 							<FontAwesomeIcon icon={faEllipsisVertical} />
 						</div>
