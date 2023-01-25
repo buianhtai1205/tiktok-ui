@@ -55,7 +55,7 @@ const LOGIN_TYPES = [
 ];
 
 const LoginModal = (props) => {
-	const [isSignUp, setIsSignUp] = useState(true);
+	const [isSignUp, setIsSignUp] = useState(false);
 
 	const handleSignUp = () => {
 		setIsSignUp(!isSignUp);
