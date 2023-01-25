@@ -2,7 +2,6 @@ import clsx from "clsx";
 import styles from "./Button.module.scss";
 
 const Button = (props) => {
-	console.log(props);
 	return (
 		<button className={clsx(styles.button)}>
 			<div

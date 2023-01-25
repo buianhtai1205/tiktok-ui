@@ -8,6 +8,7 @@ import {
 	faPlus,
 	faEllipsisVertical,
 	faLanguage,
+	faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {
 	faCircleQuestion,
@@ -21,6 +22,7 @@ import Popper from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
+import LoginModal from "~/components/LoginModal";
 
 const MENU_ITEMS = [
 	{
@@ -74,6 +76,9 @@ const MENU_ITEMS = [
 
 const Header = () => {
 	const [searchResult, setSearchResult] = useState([]);
+	const [isLogin, setIsLogin] = useState(false);
+	const [showLoginModal, setShowLoginModal] = useState(false);
+
 	useEffect(() => {
 		//fake api
 		const apiResult = [
@@ -106,84 +111,112 @@ const Header = () => {
 		setSearchResult(apiResult);
 	}, []);
 
+	const handleShowLoginModal = () => {
+		if (isLogin === false) {
+			setShowLoginModal(true);
+		}
+	};
+
 	return (
-		<header className={clsx(styles.wrapper)}>
-			<div className={clsx(styles.inner)}>
-				{/* Logo */}
-				<div className={clsx(styles.logo)}>
-					<img src={images.logo} alt="TikTok" />
-				</div>
-
-				{/* Search */}
-				<Tippy
-					interactive={true}
-					visible={searchResult.length > 0}
-					render={(attrs) => (
-						<div
-							className={clsx(styles.searchResult, "d-none")}
-							tabIndex="-1"
-							{...attrs}
-						>
-							<Popper>
-								<h4 className={clsx(styles.title)}>Account</h4>
-								{searchResult.map((item, index) => (
-									<AccountItem
-										key={index}
-										accountInfo={item}
-									/>
-								))}
-							</Popper>
-						</div>
-					)}
-				>
-					<div className={clsx(styles.search)}>
-						<input
-							placeholder="Search account and video"
-							spellCheck={false}
-						/>
-						<button className={clsx(styles.clear)}>
-							{/* Clear */}
-							<FontAwesomeIcon icon={faCircleXmark} />
-						</button>
-						{/* Loading */}
-						<FontAwesomeIcon
-							className={clsx(styles.loading)}
-							icon={faSpinner}
-						/>
-						<button className={clsx(styles.searchBtn)}>
-							{/* Search */}
-							<FontAwesomeIcon icon={faMagnifyingGlass} />
-						</button>
+		<>
+			<header className={clsx(styles.wrapper)}>
+				<div className={clsx(styles.inner)}>
+					{/* Logo */}
+					<div className={clsx(styles.logo)}>
+						<img src={images.logo} alt="TikTok" />
 					</div>
-				</Tippy>
 
-				{/* Action */}
-				<div className={clsx(styles.action)}>
-					{/* Upload */}
-					<div className={clsx(styles.upload)}>
-						<Button default>
-							<FontAwesomeIcon
-								className={clsx(styles.iconPlus)}
-								icon={faPlus}
+					{/* Search */}
+					<Tippy
+						interactive={true}
+						visible={searchResult.length > 0}
+						render={(attrs) => (
+							<div
+								className={clsx(styles.searchResult, "d-none")}
+								tabIndex="-1"
+								{...attrs}
+							>
+								<Popper>
+									<h4 className={clsx(styles.title)}>
+										Account
+									</h4>
+									{searchResult.map((item, index) => (
+										<AccountItem
+											key={index}
+											accountInfo={item}
+										/>
+									))}
+								</Popper>
+							</div>
+						)}
+					>
+						<div className={clsx(styles.search)}>
+							<input
+								placeholder="Search account and video"
+								spellCheck={false}
 							/>
-							<div className={clsx(styles.text)}>Upload</div>
-						</Button>
-					</div>
-
-					{/* Login */}
-					<div className={clsx(styles.login)}>
-						<Button primary>Log in</Button>
-					</div>
-
-					{/* Menu */}
-					<Menu items={MENU_ITEMS}>
-						<div className={clsx(styles.menu)}>
-							<FontAwesomeIcon icon={faEllipsisVertical} />
+							<button className={clsx(styles.clear)}>
+								{/* Clear */}
+								<FontAwesomeIcon icon={faCircleXmark} />
+							</button>
+							{/* Loading */}
+							<FontAwesomeIcon
+								className={clsx(styles.loading)}
+								icon={faSpinner}
+							/>
+							<button className={clsx(styles.searchBtn)}>
+								{/* Search */}
+								<FontAwesomeIcon icon={faMagnifyingGlass} />
+							</button>
 						</div>
-					</Menu>
+					</Tippy>
+
+					{/* Action */}
+					<div className={clsx(styles.action)}>
+						{/* Upload */}
+						<div className={clsx(styles.upload)}>
+							<Button default>
+								<FontAwesomeIcon
+									className={clsx(styles.iconPlus)}
+									icon={faPlus}
+								/>
+								<div className={clsx(styles.text)}>Upload</div>
+							</Button>
+						</div>
+
+						{/* Login */}
+						<div
+							className={clsx(styles.login)}
+							onClick={handleShowLoginModal}
+						>
+							<Button primary>Log in</Button>
+						</div>
+
+						{/* Menu */}
+						<Menu items={MENU_ITEMS}>
+							<div className={clsx(styles.menu)}>
+								<FontAwesomeIcon icon={faEllipsisVertical} />
+							</div>
+						</Menu>
+					</div>
 				</div>
-			</div>
-		</header>
+			</header>
+
+			{/* Login Modal */}
+			{showLoginModal && (
+				<LoginModal>
+					<div
+						className={clsx(styles.closeModalContainer)}
+						onClick={() => setShowLoginModal(false)}
+					>
+						<FontAwesomeIcon
+							icon={faXmark}
+							className={clsx(styles.closeModal)}
+						/>
+					</div>
+				</LoginModal>
+			)}
+		</>
 	);
 };
 
