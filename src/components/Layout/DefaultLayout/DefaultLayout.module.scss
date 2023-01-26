@@ -2,17 +2,22 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
+	overflow: visible;
 }
 
 .container {
 	width: var(--default-layout-width);
+	max-width: 100%;
 	display: flex;
+	position: relative;
 }
 
 .content {
 	flex: 1;
 	margin-right: 16px;
-	margin-left: 68px;
+	margin-left: calc(var(--default-layout-sidebar-width) + 68px);
+	margin-top: var(--default-layout-header-height, 60px);
 	width: 692px;
 	max-width: 692px;
 	padding: 24px 0;

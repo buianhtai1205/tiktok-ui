@@ -20,48 +20,64 @@ const Sidebar = () => {
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 			{
 				username: "nguyenvana.offical",
 				fullname: "Nguyen Van A",
 				images: "https://img.meta.com.vn/Data/image/2022/01/06/avatar-tiktok-6.jpg",
 				isTick: true,
+				followers: "6.7M",
+				likes: "429.9M",
 			},
 		];
 
@@ -134,7 +150,9 @@ const Sidebar = () => {
 						if (showAll === false && index >= 5) {
 							return "";
 						}
-						return <AccountItem key={index} accountInfo={item} />;
+						return (
+							<AccountItem key={index} accountInfo={item} hover />
+						);
 					})}
 				</div>
 				{suggestedAccounts.length > 5 && (

@@ -1,11 +1,19 @@
 .wrapper {
 	width: var(--default-layout-sidebar-width);
 	padding: 20px 0 26px 8px;
+	position: fixed;
+	z-index: 1;
+	margin-top: var(--default-layout-header-height);
 }
 
 .navBar {
 	margin-bottom: 8px;
 	position: relative;
+	overflow: hidden auto;
+	overscroll-behavior-y: contain;
+	perspective: 1px;
+	transform-style: preserve-3d;
+	perspective-origin: right top;
 
 	.navBarContent {
 		display: flex;
